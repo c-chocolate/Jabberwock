@@ -10,7 +10,7 @@ output：DataFrame pkl file where vectors are stored
 
 ## How to use the code
 
-'python tool.py <mode> <parameter> <urlnum> <tool_type>'
+`python tool.py <mode> <parameter> <urlnum> <tool_type>`
 
 ### mode
 
