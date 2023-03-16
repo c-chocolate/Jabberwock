@@ -19,8 +19,11 @@ Types of parameters specified by "parameter" in Doc2Vec
 Default values are set except for those specified here.
 
 1: vec_size
+
 2: epochs
+
 3: min_count
+
 4: dm
 
 ### parameter
@@ -34,7 +37,9 @@ Number of URLs in the URL list that you want to convert
 ### tool_type
 
 0: Normal（do all)
+
 1: JavaScript collection and conversion to WebAssembly Text
+
 2: Vectorization of WebAssembly Text
 
 ## Caution
