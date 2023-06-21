@@ -6,6 +6,7 @@ import time
 import os
 import sys
 import argparse
+import shutil
 
 csv_text=",,,"
 save_js_num=-1
@@ -38,6 +39,15 @@ tool_type=args.tool_type
 ##################################
 
 if label_mode==1:
+    if os.path.exists('label_data'):
+        shutil.rmtree('label_data')
+    os.mkdir('label_data') 
+    if os.path.exists('benign_data'):
+        shutil.rmtree('benign_data')
+    os.mkdir('benign_data') 
+    if os.path.exists('malicious_data'):
+        shutil.rmtree('malicious_data')
+    os.mkdir('malicious_data') 
     save_fd="benign_data"
     if tool_type==0 or tool_type==1:
         save_js_num=ex_collect.collect(benign_urllist_file_name,benign_num,save_fd)
@@ -53,6 +63,9 @@ if label_mode==1:
         csv_text=ex_vec_label.ex_vec(vec_mode,benign_num,malicious_num,parameter,save_fd)
 
 elif label_mode==2:
+    if os.path.exists('non_label_data'):
+        shutil.rmtree('non_label_data')
+    os.mkdir('non_label_data') 
     save_fd="non_label_data"
     if tool_type==0 or tool_type==1:
         save_js_num=ex_collect.collect(nonlabel_urllist_file_name,nonlabel_num,save_fd)
