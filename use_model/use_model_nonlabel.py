@@ -10,7 +10,7 @@ import shutil
 import time
 import sys
 
-def ex_vec(mode,a_model_num,parameter,outputfd):
+def ex_vec(mode,a_model_num,parameter,save_fd):
     ####################################################################
     vec_size=100
     epoch_num=10
@@ -38,19 +38,18 @@ def ex_vec(mode,a_model_num,parameter,outputfd):
     csv_text=","+str(vec_size)+","+str(epoch_num)+","+str(min_count)+","+str(dm)
 
 
-    if os.path.exists('use_model/error_txt'):
-        shutil.rmtree('use_model/error_txt')
-    os.mkdir('use_model/error_txt')
+    if os.path.exists(save_fd+'/model'):
+        shutil.rmtree(save_fd+'/model')
+    os.mkdir(save_fd+'/model')    
+    if os.path.exists(save_fd+'/pkl'):
+        shutil.rmtree(save_fd+'/pkl')
+    os.mkdir(save_fd+'/pkl') 
 
-    if os.path.exists('use_model/model'):
-        shutil.rmtree('use_model/model')
-    os.mkdir('use_model/model')    
-
-    error_file_path='use_model/error_txt/use_model_error_file_list.txt'
+    error_file_path=save_fd+'use_model_error_file_list.txt'
 
     wat_split_data=[]
     for num1 in range(a_model_num):
-        wat_path="a2_o_wat/"+str(num1+1)+".wat"
+        wat_path=save_fd+"/a2_o_wat/"+str(num1+1)+".wat"
         try:
             f1=open(wat_path,'r')
             watdata=f1.read()
@@ -67,7 +66,7 @@ def ex_vec(mode,a_model_num,parameter,outputfd):
     print("<TRAINING>")
     trainings = [TaggedDocument(data, [i]) for i,data in enumerate(wat_split_data)]
     doc2vec = Doc2Vec(documents= trainings,vector_size=vec_size,epochs=epoch_num,min_count=min_count,dm=dm)
-    doc2vec.save("use_model/model/doc2vec"+name+".model")
+    doc2vec.save(save_fd+"/model/doc2vec"+name+".model")
     print("<SAVE : doc2vec"+name+".model>")
 
     vector=list(map(doc2vec.infer_vector,wat_split_data))
@@ -78,7 +77,7 @@ def ex_vec(mode,a_model_num,parameter,outputfd):
         )
     df=pd.DataFrame(data=data)
 
-    df.to_pickle(outputfd+'/data'+name+'.pkl')
+    df.to_pickle(save_fd+'/pkl/data'+name+'.pkl')
 
     return csv_text
 
@@ -86,5 +85,5 @@ if __name__=="__main__":
     mode=1
     url_num=3
     parameter=10
-    outputfd="pkl"
-    result=ex_vec(mode,url_num,parameter,outputfd)
+    save_fd="pkl"
+    result=ex_vec(mode,url_num,parameter,save_fd)

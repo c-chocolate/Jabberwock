@@ -89,21 +89,19 @@ def link_to_url(url, link):
         return None
 
 
-def collect(input_file_name,input_url_num):
+def collect(input_file_name,input_url_num,save_fd):
 
     mode=0  
     done_url_num=382 
     save_url_num=1 
 
     if mode!=1:
-        if os.path.exists('a1_o_jsdata'):
-            shutil.rmtree('a1_o_jsdata')
-        if os.path.isfile('a1_collect/error_file_list.txt'):
-            os.remove('a1_collect/error_file_list.txt')
-        if os.path.isfile('a1_collect/done_url_list.txt'):
-            os.remove('a1_collect/done_url_list.txt')
+        if os.path.exists(save_fd+'/a1_o_jsdata'):
+            shutil.rmtree(save_fd+'/a1_o_jsdata')
+        if os.path.isfile(save_fd+'/a1_done_url_list.txt'):
+            os.remove(save_fd+'/a1_done_url_list.txt')
 
-        os.mkdir('a1_o_jsdata')
+        os.mkdir(save_fd+'/a1_o_jsdata')
 
     f1=open(input_file_name, "r")
     urllist=f1.read().splitlines()[0:input_url_num]
@@ -115,7 +113,7 @@ def collect(input_file_name,input_url_num):
             continue
 
         print("<URL "+str(num1+1)+"/"+str(len(urllist))+">:"+url)
-        f2=open("a1_collect/done_url_list.txt",'a')
+        f2=open(save_fd+"/a1_done_url_list.txt",'a')
         f2.write("<URL "+str(num1+1)+"/"+str(input_url_num)+">:"+url+"\n")
         f2.close()
 
@@ -133,7 +131,7 @@ def collect(input_file_name,input_url_num):
         for num2 in range(js_url_list_num):
             js_url=random.choice(js_url_list)
             js_url_list.remove(js_url)
-            js_path="a1_o_jsdata/"+str(save_url_num)+".js"
+            js_path=save_fd+"/a1_o_jsdata/"+str(save_url_num)+".js"
             request = urllib.request.Request(js_url, headers=headers)
             try:
                 resp = urllib.request.urlopen(request, timeout=10)
