@@ -4,7 +4,7 @@ This tool collects JavaScript from a URL list, converts it to WebAssembly, and p
 
 ## input-output
 
-input：URL list（Specified in tool.py)
+input：URL list
 
 output：DataFrame pkl file where vectors are stored
 
@@ -16,10 +16,10 @@ output：DataFrame pkl file where vectors are stored
 
 | option | default |
 | ---- | ---- |
-| --benign_list | benign_list.txt |
+| -l, --label_mode | 0 |
+| --benign_list | benign_list.txt | 
 | --malicious_list | malicious_list.txt |
 | --nonlabel_list | nonlabel_list.txt |
-| -l, --label_mode | 0 |
 |-b, --benign_num | 100 |
 |-m, --malicious_num | 100 |
 |-n, --nonlabel_num | 100 |
@@ -27,6 +27,33 @@ output：DataFrame pkl file where vectors are stored
 |-p, --parameter | 100 |
 |-t, --tool_type | 0 |
 
+### label_mode
+
+1: labeled
+
+2: non-labeled
+
+### input
+
+#### labeled
+
+Need a list of benign and malicious URLs.
+
+Default points to the same location as tool.py.
+
+Optionally, the URL list of inputs can be changed.(--benign_list, --malicious_list)
+
+Can specify the number of URLs to use out of a URL list.(-b, -m)
+
+#### non-labeled
+
+Need a list of URLs.
+
+Default points to the same location as tool.py.
+
+Optionally, the URL list of inputs can be changed.(--nonlabel_list)
+
+Can specify the number of URLs to use out of a URL list.(-n)
 
 ### vec_mode
 
