@@ -73,10 +73,6 @@ Default values are set except for those specified here.
 
 Value of parameter specified by "mode"
 
-### urlnum
-
-Number of URLs in the URL list that you want to convert
-
 ### tool_type
 
 0: Normal（do all)
@@ -87,4 +83,5 @@ Number of URLs in the URL list that you want to convert
 
 ## Caution
 This tool uses Wobfuscator by Alan et al.
+
 Place wobfuscator_tool in the folder a2_model.
