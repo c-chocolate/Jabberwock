@@ -10,12 +10,12 @@ output：DataFrame pkl file where vectors are stored
 
 ## How to use the code
 
-`python tool.py
+`python tool.py`
 
 ## option
 
 | option | default |
-|----|----|
+| ---- | ---- |
 | --benign_list | benign_list.txt |
 | --malicious_list | malicious_list.txt |
 | --nonlabel_list | nonlabel_list.txt |
