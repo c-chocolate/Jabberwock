@@ -1,6 +1,6 @@
 # JABBERWOCK
 
-This tool collects JavaScript from a URL list, converts it to WebAssembly Text, and performs vectorization.
+This tool collects JavaScript from a URL list, converts it to WebAssembly, and performs vectorization.
 
 ## input-output
 
@@ -10,9 +10,25 @@ output：DataFrame pkl file where vectors are stored
 
 ## How to use the code
 
-`python tool.py <mode> <parameter> <urlnum> <tool_type>`
+`python tool.py
 
-### mode
+## option
+
+| option | default |
+|----|----|
+| --benign_list | benign_list.txt |
+| --malicious_list | malicious_list.txt |
+| --nonlabel_list | nonlabel_list.txt |
+| -l, --label_mode | 0 |
+|-b, --benign_num | 100 |
+|-m, --malicious_num | 100 |
+|-n, --nonlabel_num | 100 |
+|-v, --vec_mode | 1 |
+|-p, --parameter | 100 |
+|-t, --tool_type | 0 |
+
+
+### vec_mode
 
 Types of parameters specified by "parameter" in Doc2Vec
 

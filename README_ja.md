@@ -1,6 +1,6 @@
 # JABBERWOCK
 
-このツールはURLリストからJavaScriptを収集し、WebAssembly Textに変換し、ベクトル化を行います。
+このツールはURLリストからJavaScriptを収集し、WebAssemblyに変換し、ベクトル化を行います。
 
 ## 入出力
 
@@ -10,7 +10,7 @@
 
 ## コードの使い方
 
-'python tool.py <mode> <parameter> <urlnum> <tool_type>'
+'python tool.py'
 
 # mode
 
