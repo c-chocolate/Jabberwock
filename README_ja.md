@@ -58,6 +58,7 @@ URLリストのうち使うURLの数を指定できる(-n)
 # vec_mode
 
 Doc2Vecにおいてparameterで指定するパラメータの種類
+
 ここで指定するもの以外は初期値を設定している
 
 1: vec_size
@@ -72,9 +73,12 @@ modeで指定したパラメータの値
 # tool_type
 
 0: 通常（全て行う)
+
 1: JavaScriptの収集とWebAssembly Textへの変換
+
 2: WebAssembly Textのベクトル化
 
 ## 注意
 このツールはAlanらによるWobfuscatorを使用しています。
+
 フォルダa2_model内にwobfuscator_toolを置いてください。
